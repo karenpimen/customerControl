@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div class="container nav-elements">
+
+    <h1> Customer control</h1>
+
+    <h2>Search by Id</h2>
+
+    <form th:action="@{/searchById}" method="get" th:object="${customer}">
+        <label for="id">Id:</label>
+        <input type="text" field="*{customer_id}" th:name="customer_id"/>
+        <br/>
+        <input type="submit" name="searchById" value="search"/>
+    </form>
+
+</div><!-- container nav-elements -->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+    <a th:href="@{/}">Go home</a>
+    <br/>
+    <br/>
+    <a th:href="@{/addCustomer}">Add a new customer</a>
+
+    <div th:if="${customers != null and !customers.empty}">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.name}"> Show name</td>
+                <td th:text="${customer.last_name}"> Show last_name</td>
+                <td th:text="${customer.email}"> Show email</td>
+                <td th:text="${customer.birthday}"> Show birthday</td>
+                <td><a th:href="@{/update/} + ${customer.customer_id}" th:text="Update"/></td>
+                <td><a th:href="@{/delete(customer_id=${customer.customer_id})}" th:text="Delete"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${customers == null or customers.empty}">
+        <p>Customer deleted successfully</p>
+    </div>
+
+</body>
+</html>
